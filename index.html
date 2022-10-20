@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="customSelect/customSelect.js"></script>
+    <link rel="stylesheet" href="customSelect/customSelect.css">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="header--header">Preferences</h1>
+            <p class="header--desc">
+                On this page you can configure the main system parameters available for customization
+            </p>
+        </div>
+    </header>
+    <main class="main">
+        <div class="container">
+            <form id="form" class="form" action="">
+                <div class="input-group">
+
+                    <label class="input input-group--input">
+                        <span class="input--label">Company Title </span>
+                        <input id="title" class="input--field" type="text" placeholder="Star and Moon">
+                    </label>
+                    <label class="input input-group--input">
+                        <span class="input--label">First Day</span>
+                        <select id="day" class="select input--field">
+                            <option class="select--option" value="Monday">Monday</option>
+                            <option class="select--option" value="Sunday">Sunday</option>
+                            <option class="select--option" value="System">System</option>
+                        </select>
+                    </label>
+                    <label class="input input-group--input">
+                        <span class="input--label">Container Width</span>
+                        <select id="width" class="select input--field">
+                            <option class="select--option" value="Fixed">Fixed</option>
+                            <option class="select--option" value="Auto">Auto</option>
+                            <option class="select--option" value="Flexible">Flexible</option>
+                        </select>
+                    </label>
+                    <label class="input input-group--input">
+                        <span class="input--label">Homepage</span>
+
+                        <select id="project" class="select input--field">
+                            <option class="select--option" value="Starred Projects">Starred Projects</option>
+                            <option class="select--option" value="Starred Projects1">Starred Projects2</option>
+                            <option class="select--option" value="Starred Projects2">Starred Projects3</option>
+                        </select>
+
+                    </label>
+                    <label class="input input-group--input">
+                        <span class="input--label">Indent Size</span>
+                        <input id="size" class=" input--field" disabled placeholder="Default" type="text">
+                    </label>
+                    <label class="input input-group--input">
+                        <span class="input--label">Personal Code</span>
+                        <div class="input--desc-wrapper">
+
+                            <div class="input--inputs--inline">
+
+                                <input id="code1" class="input--field input--field--short" type="text"> -
+                                <input id="code2" class="input--field input--field--short" type="text"> -
+                                <input id="code3" class="input--field input--field--short" type="text">
+                            </div>
+                            <span class="input--desc">12 digits</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="input-group">
+                    <label class="input input-group--input">
+                        <span class="input--label">Theme</span>
+                        <div id="get-theme" class="input--inputs input--inputs-column">
+
+
+                            <label class="input--radio-wrapper">
+                                <input value="theme-light" class="input--radio" checked name="theme" type="radio">
+                                Light
+                            </label>
+                            <label class="input--radio-wrapper">
+                                <input value="theme-dark" class="input--radio" name="theme" type="radio">
+                                Dark
+                            </label>
+
+                        </div>
+                    </label>
+                </div>
+                <div class="form--buttons">
+                    <button id="submit" class="form--button form--button--primary" type="submit">Apply and Save</button>
+                    <button id="cansel" class="form--button form--button--secondary" type="submit">Cancel</button>
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer--container">
+
+            <p class="footer--desc">2020-2022 <a class="link link--underline" href="/">Terms of Service</a> and <a
+                    class="link link--underline" href="/">Conditions</a> </p>
+        </div>
+
+    </footer>
+</body>
+
+</html>
+
+<script defer>
+    new SlimSelect({
+        select: '#day',
+        showSearch: false,
+        allowDeselectOption: true,
+        placeholder: 'Select day'
+    })
+    new SlimSelect({
+        select: '#width',
+        showSearch: false,
+        allowDeselectOption: true,
+        placeholder: 'Select width'
+
+    })
+    new SlimSelect({
+        select: '#project',
+        showSearch: false,
+        allowDeselectOption: true,
+        placeholder: 'Select project'
+
+    })
+
+    document.querySelector('#form').addEventListener('submit', e => {
+        e.preventDefault()
+
+        window.localStorage.setItem('title', document.getElementById('title').value)
+        window.localStorage.setItem('day', document.getElementById('day').value)
+        window.localStorage.setItem('width', document.getElementById('width').value)
+        window.localStorage.setItem('project', document.getElementById('project').value)
+        window.localStorage.setItem('size', document.getElementById('size').value)
+        window.localStorage.setItem('code1', document.getElementById('code1').value)
+        window.localStorage.setItem('code2', document.getElementById('code2').value)
+        window.localStorage.setItem('code3', document.getElementById('code3').value)
+        window.localStorage.setItem('theme', document.querySelector('input[name="theme"]:checked').value)
+        setTheme(localStorage.theme ? localStorage.theme : 'theme-light');
+
+
+    })
+
+
+    function fillform() {
+        localStorage.title && (document.getElementById('title').value = localStorage.title)
+        localStorage.day && (document.getElementById('day').value = localStorage.day)
+        localStorage.width && (document.getElementById('width').value = localStorage.width)
+        localStorage.project && (document.getElementById('project').value = localStorage.project)
+        localStorage.size && (document.getElementById('size').value = localStorage.size)
+        localStorage.code1 && (document.getElementById('code1').value = localStorage.code1)
+        localStorage.code2 && (document.getElementById('code2').value = localStorage.code2)
+        localStorage.code3 && (document.getElementById('code3').value = localStorage.code3)
+        localStorage.theme && (document.querySelector(`input[value="${localStorage.theme}"]`).checked = true)
+    }
+
+    function setTheme(themeName) {
+        localStorage.setItem('theme', themeName);
+        document.body.className = themeName;
+    }
+
+    fillform()
+    setTheme(localStorage.theme ? localStorage.theme : 'theme-light');
+
+</script>

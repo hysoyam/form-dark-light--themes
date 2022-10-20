@@ -1,0 +1,321 @@
+:root,
+.theme-light {
+    /* light */
+    --color-primary-700: #205EB0;
+    --color-primary-500: #2A75DB;
+    --color-primary-100: #AAC9F1;
+
+    --color-secondary-700: #B0B5BD;
+    --color-secondary-500: #F8F8F8;
+
+    --color-text-800: #0B0A0A;
+    --color-text-500: #585050;
+    --color-text-300: #887C7C;
+    --color-text-200: #DFDADA;
+    --color-text-100: #F8F8F8;
+}
+
+.theme-dark {
+    /* dark */
+    --color-primary-700: #AAC9F1;
+    --color-primary-500: #B9D5FC;
+    --color-primary-100: #F0F6FF;
+
+    --color-secondary-700: #0C0D0D;
+    --color-secondary-500: #424242;
+
+    --color-text-800: #F3F3F3;
+    --color-text-500: #DFDADA;
+    --color-text-300: #887C7C;
+    --color-text-200: #585050;
+    --color-text-100: #1E1D1D;
+}
+
+* {
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+label {
+    pointer-events: none;
+}
+
+label>* {
+    pointer-events: all;
+}
+
+body {
+    margin: 0;
+    padding: 0 32px;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 1024px;
+    background-color: var(--color-secondary-500);
+
+    /* todo Ubuntu */
+    font-family: sans-serif;
+    color: var(--color-text-500);
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 400;
+}
+
+.container {
+    width: 986px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.link {
+    color: var(--color-primary-700);
+    cursor: pointer;
+
+}
+
+.link--underline {
+    position: relative;
+}
+
+.link--underline::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    bottom: -0px;
+    left: 0;
+    right: 0;
+    background-color: var(--color-primary-700);
+    opacity: .2;
+}
+
+.header {
+    margin-top: 32px;
+    flex: 0 0 auto;
+
+}
+
+.header--header {
+    margin: 0;
+    color: var(--color-text-800);
+
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.header--desc {
+    margin: 0;
+    margin-top: 4px;
+}
+
+.main {
+    margin-top: 32px;
+    flex: 1 0 auto;
+}
+
+.form {
+    width: 324px;
+}
+
+.input-group:not(:first-child) {
+    margin-top: 18px;
+}
+
+.input-group--input:not(:first-child) {
+    margin-top: 24px;
+}
+
+.input {
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    pointer-events: none;
+}
+
+label>* {
+    pointer-events: all;
+}
+
+.input--label {
+    margin-top: 11px;
+}
+
+.input--field {
+    width: 196px;
+    padding: 8px;
+    background: var(--color-text-200);
+    border: 1px solid var(--color-text-300);
+    border-radius: 6px;
+    color: var(--color-text-800);
+    font-weight: 400;
+    font-size: 14px;
+    transition: 0.3s color, 0.3s border-color, 0.3s background-color;
+}
+
+.input--field::placeholder {
+    font-weight: 300;
+    color: var(--color-text-300);
+}
+
+.input--field:hover {
+    background-color: var(--color-text-200);
+    box-shadow: inset 0px 0px 0px 100px rgba(0, 0, 0, 0.2);
+}
+
+.input--field:active,
+.input--field:focus,
+.input--field:focus-visible,
+.input--field:focus-within {
+    outline: none;
+    border-color: var(--color-primary-500);
+    background-color: var(--color-text-200);
+}
+
+.input--field:disabled {
+    color: var(--color-text-300);
+    background: var(--color-text-200);
+}
+
+
+.input--field--short {
+    width: 50px;
+}
+
+.input--desc {
+    margin-top: 5px;
+    color: var(--color-text-300);
+    font-size: 11px;
+}
+
+.select {
+    cursor: pointer;
+}
+
+.select--content {
+    top: calc(100% + 2px);
+    left: -1px;
+    right: -1px;
+    background-color: var(--color-secondary-500);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+}
+
+.select--option {
+    padding: 8px;
+    color: var(--color-text-800);
+    transition: 0.3s color, 0.3s border-color, 0.3s background-color;
+}
+
+.select--option:hover {
+    background: var(--color-text-200);
+}
+
+.input--inputs--inline {
+    width: 196px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input--inputs-column {
+    margin-top: 11px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input--inputs-column>*:not(:first-child) {
+    margin-top: 14px;
+    width: 196px;
+}
+
+.input--radio-wrapper {
+    display: flex;
+    gap: 7px;
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.input--radio {
+    margin: 0;
+}
+
+.form--buttons {
+    margin-top: 32px;
+}
+
+.form--buttons button:not(:first-child) {
+    margin-left: 16px;
+}
+
+.form--button {
+    padding: 8px;
+    border-width: 1px;
+    border-radius: 3px;
+    border-style: solid;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s color, 0.3s border-color, 0.3s background-color;
+}
+
+.form--button--primary {
+    color: var(--color-text-100);
+    background-color: var(--color-primary-500);
+    border-color: var(--color-primary-500);
+}
+
+.form--button--primary:hover {
+    color: var(--color-text-100);
+    background-color: var(--color-primary-500);
+}
+
+.form--button--primary:focus,
+.form--button--primary:focus-visible,
+.form--button--primary:focus-within {
+    color: var(--color-text-100);
+    background-color: var(--color-primary-500);
+    border-color: var(--color-primary-100);
+    outline: none;
+}
+
+.form--button--secondary {
+    color: var(--color-primary-700);
+    background-color: transparent;
+    border-color: transparent;
+
+}
+
+.form--button--secondary:hover {
+    color: var(--color-primary-700);
+    background-color: var(--color-secondary-500);
+    border-color: var(--color-secondary-700);
+    box-shadow: inset 0px 0px 0px 100px rgba(0, 0, 0, 0.2);
+}
+ 
+.form--button--secondary:focus,
+.form--button--secondary:focus-visible,
+.form--button--secondary:focus-within {
+    color: var(--color-primary-700);
+    background-color: transparent;
+    border-color: var(--color-primary-500);
+    outline: none;
+}
+
+.footer {
+    height: 256px;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-image: url('footer-bg.png');
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    padding-bottom: 24px;
+}
+
+.footer--desc {
+    margin: 0;
+    text-align: center;
+}

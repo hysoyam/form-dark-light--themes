@@ -1,0 +1,372 @@
+.select--main {
+    position: relative;
+    display: inline-block;
+    user-select: none;
+    color: #666;
+    width: 100%
+}
+
+.select--main .select--single-selected {
+    display: flex;
+    cursor: pointer;
+    width: 100%;
+    outline: 0;
+    box-sizing: border-box;
+    transition: background-color .2s
+}
+
+.select--main .select--single-selected.select--disabled {
+    background-color: #dcdee2;
+    cursor: not-allowed
+}
+
+.select--main .select--single-selected.select--open-above {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0
+}
+
+.select--main .select--single-selected.select--open-below {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0
+}
+
+.select--main .select--single-selected .placeholder {
+    flex: 1 1 100%;
+    text-align: left;
+    width: calc(100% - 30px);
+    line-height: 1em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.select--main .select--single-selected .placeholder,
+.select--main .select--single-selected .placeholder * {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.select--main .select--single-selected .placeholder * {
+    width: auto
+}
+
+.select--main .select--single-selected .placeholder .select--disabled {
+    font-weight: 300;
+    color: var(--color-text-300);
+    font-size: 14px;
+}
+
+.select--main .select--single-selected .select--deselect {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 0 1 auto;
+    margin: 0 6px;
+    font-weight: 700
+}
+
+.select--main .select--single-selected .select--deselect.select--hide {
+    display: none
+}
+
+.select--main .select--single-selected .select--arrow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 0 1 auto;
+    margin: 0 6px
+}
+
+.select--main .select--single-selected .select--arrow span {
+    border: solid var(--color-primary-500);
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transition: transform .2s, margin .2s
+}
+
+.select--main .select--single-selected .select--arrow span.arrow-up {
+    transform: rotate(-135deg);
+    margin: 3px 0 0
+}
+
+.select--main .select--single-selected .select--arrow span.arrow-down {
+    transform: rotate(45deg);
+    margin: -3px 0 0
+}
+
+.select--main .select--multi-selected {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    min-height: 30px;
+    width: 100%;
+    padding: 0 0 0 3px;
+    /* #2A75DB */
+    border: 1px solid #dcdee2;
+    border-radius: 4px;
+    /* background-color: #fff; */
+    outline: 0;
+    box-sizing: border-box;
+    transition: background-color .2s
+}
+
+.select--main .select--multi-selected.select--disabled {
+    background-color: #dcdee2;
+    cursor: not-allowed
+}
+
+.select--main .select--multi-selected.select--disabled .select--values .select--disabled {
+    color: #666
+}
+
+.select--main .select--multi-selected.select--disabled .select--values .select--value .select--value-delete {
+    cursor: not-allowed
+}
+
+.select--main .select--multi-selected.select--open-above {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0
+}
+
+.select--main .select--multi-selected.select--open-below {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0
+}
+
+.select--main .select--multi-selected .select--values {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex: 1 1 100%;
+    width: calc(100% - 30px)
+}
+
+.select--main .select--multi-selected .select--values .select--disabled {
+    display: flex;
+    padding: 4px 5px;
+    margin: 2px 0;
+    line-height: 1em;
+    align-items: center;
+    width: 100%;
+    color: #dedede;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+@keyframes scaleOut {
+    0% {
+        transform: scale(1);
+        opacity: 1
+    }
+
+    to {
+        transform: scale(0);
+        opacity: 0
+    }
+}
+
+.select--main .select--multi-selected .select--values .select--value {
+    display: flex;
+    user-select: none;
+    align-items: center;
+    font-size: 12px;
+    padding: 3px 5px;
+    margin: 3px 5px 3px 0;
+    color: #fff;
+    background-color: #5897fb;
+    border-radius: 4px;
+    animation-name: scaleIn;
+    animation-duration: .2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both
+}
+
+.select--main .select--multi-selected .select--values .select--value.select--out {
+    animation-name: scaleOut;
+    animation-duration: .2s;
+    animation-timing-function: ease-out
+}
+
+.select--main .select--multi-selected .select--values .select--value .select--value-delete {
+    margin: 0 0 0 5px;
+    cursor: pointer
+}
+
+.select--main .select--multi-selected .select--add {
+    display: flex;
+    flex: 0 1 3px;
+    margin: 9px 12px 0 5px
+}
+
+.select--main .select--multi-selected .select--add .select--plus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #666;
+    position: relative;
+    height: 10px;
+    width: 2px;
+    transition: transform .2s
+}
+
+.select--main .select--multi-selected .select--add .select--plus:after {
+    background: #666;
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 10px;
+    left: -4px;
+    top: 4px
+}
+
+.select--main .select--multi-selected .select--add .select--plus.select--cross {
+    transform: rotate(45deg)
+}
+
+.select--content {
+    position: absolute;
+    box-sizing: border-box;
+    z-index: 1010;
+    transform-origin: center top;
+    transition: transform .2s, opacity .2s;
+    opacity: 0;
+    transform: scaleY(0)
+}
+
+.select--content.select--open {
+    display: block;
+    opacity: 1;
+    transform: scaleY(1)
+}
+
+.select--content .select--search {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 8px 6px
+}
+
+.select--content .select--search.select--hide,
+.select--content .select--search.select--hide input {
+    height: 0;
+    opacity: 0;
+    padding: 0;
+    margin: 0
+}
+
+.select--content .select--search input {
+    display: inline-flex;
+    font-size: inherit;
+    line-height: inherit;
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    height: 30px;
+    padding: 6px 8px;
+    margin: 0;
+    border: 1px solid #dcdee2;
+    border-radius: 4px;
+    background-color: #fff;
+    outline: 0;
+    text-align: left;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -webkit-appearance: textfield
+}
+
+.select--content .select--search input::placeholder {
+    color: #8a8a8a;
+    vertical-align: middle
+}
+
+.select--content .select--search input:focus {
+    box-shadow: 0 0 5px #5897fb
+}
+
+.select--content .select--search .select--addable {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 700;
+    flex: 0 0 30px;
+    height: 30px;
+    margin: 0 0 0 8px;
+    border: 1px solid #dcdee2;
+    border-radius: 4px;
+    box-sizing: border-box
+}
+
+.select--content .select--addable {
+    padding-top: 0
+}
+
+.select--content .select--list {
+    max-height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: left
+}
+
+.select--content .select--list .select--optgroup .select--optgroup-label {
+    padding: 6px 10px;
+    font-weight: 700
+}
+
+.select--content .select--list .select--optgroup .select--option {
+    padding: 6px 6px 6px 25px
+}
+
+.select--content .select--list .select--optgroup-label-selectable {
+    cursor: pointer
+}
+
+.select--content .select--list .select--optgroup-label-selectable:hover {
+    color: #fff;
+    background-color: #5897fb
+}
+
+.select--content .select--list .select--option {
+    cursor: pointer;
+    user-select: none
+}
+
+.select--content .select--list .select--option * {
+    display: inline-block
+}
+
+
+
+.select--content .select--list .select--option.select--disabled {
+    cursor: not-allowed;
+    color: #dedede;
+    background-color: #fff
+}
+
+
+
+.select--content .select--list .select--option.select--hide {
+    display: none
+}
+
+.select--content .select--list .select--option .select--search-highlight {
+    background-color: #fffb8c
+}
